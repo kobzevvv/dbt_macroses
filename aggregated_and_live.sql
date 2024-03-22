@@ -1,6 +1,6 @@
 -- readme 
     -- aggregated materialization by parts with realtime view output
-    -- https://docs.google.com/presentation/d/1b616YdtEF_-YNEzafAycVnjEU8nD9R089Gy8GsC2B2k/edit#slide=id.g1217c22e021_0_56
+    -- https://docs.google.com/presentation/d/1Oa-DMHodcdWv3jQJ3tX40E6v0FU96edkgXOUBen5tfw/edit#slide=id.g1217c22e021_0_196
 
     --  input data info
         --   materialization_start, DateTime i.e ‘2022-02-02’
