@@ -1,5 +1,5 @@
 -- readme 
-    -- incremental materialization by parts with realtime view output
+    -- aggregated materialization by parts with realtime view output
     -- https://docs.google.com/presentation/d/1b616YdtEF_-YNEzafAycVnjEU8nD9R089Gy8GsC2B2k/edit#slide=id.g1217c22e021_0_56
 
     --  input data info
@@ -299,7 +299,7 @@
 
 -----------------------
 
-{% materialization incremental_and_live   %}
+{% materialization _and_live   %}
 
     -- input data fields
         {%  set input_models_str                    = config.get('input_models') -%}
@@ -424,13 +424,13 @@
 
             {{ log( "Interval counts calculation... | parts_count = " ~ parts_count, not silence_mode) }} 
         --
-        ---- last incremental interval insert right border limit calculation
+        ---- last aggregated interval insert right border limit calculation
             {% set max_history_allowed_timestamp = fixed_now - dbt_improvado_utils.get_interval ( value = interval_fluctuation, unit = time_unit_name) %}
 
-            {{ log( "Last incremental interval insert right border limit calculation... | max_history_allowed_timestamp = " 
+            {{ log( "Last aggregated interval insert right border limit calculation... | max_history_allowed_timestamp = " 
                     ~ max_history_allowed_timestamp, debug_mode) }}
         --
-        ---- insert queries to _history incremental table -- TODO: change name to insert_intervals
+        ---- insert queries to _history aggregated table -- TODO: change name to insert_intervals
             {% for index in range(parts_count + 2) %}
                 -- inserting intervals list calculation
                 {% set left_where_condition, right_where_condition, left_having_condition, right_having_condition = 
